@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 582143358}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 739781079}
   - component: {fileID: 739781078}
   m_Layer: 0
-  m_Name: 6
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,30 +602,35 @@ MonoBehaviour:
   platformPrefab: {fileID: 739781077}
   platformSetting:
     normalPlatform:
+      type: 0
       index: 0
       jumpHeight: 10
       minHeight: 0.6
       maxHeight: 1.3
       weight: 80
     brokenPlatform:
+      type: 1
       index: 1
       jumpHeight: 0
       minHeight: 0.4
       maxHeight: 1
       weight: 30
     oncePlatform:
+      type: 2
       index: 2
       jumpHeight: 10
       minHeight: 1
       maxHeight: 2
       weight: 30
     doublePlatform:
+      type: 3
       index: 3
       jumpHeight: 15
       minHeight: 0.8
       maxHeight: 1.4
       weight: 15
     horizontalPlatform:
+      type: 4
       index: 4
       jumpHeight: 10
       minHeight: 0.6
@@ -634,6 +639,7 @@ MonoBehaviour:
       distance: 2
       speed: 1
     verticalPlatform:
+      type: 5
       index: 5
       jumpHeight: 10
       minHeight: 3
@@ -642,6 +648,7 @@ MonoBehaviour:
       distance: 2
       speed: 0.7
     groundPlatform:
+      type: 6
       index: 6
       jumpHeight: 10
 --- !u!4 &1353103030

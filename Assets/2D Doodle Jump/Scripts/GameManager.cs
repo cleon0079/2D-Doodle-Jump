@@ -34,77 +34,82 @@ public class GameManager : MonoBehaviour
         {
             GameObject go = Instantiate(platformPrefab, parent);
             go.SetActive(false);
-            go.name = i.ToString();
             platformPool.Add(go);
         }
     }
 
     void SpawnPlatform(int _index)
     {
-        GameObject go = platformPool[_index];
+        GameObject platformGO = platformPool[_index];
+
         float randomWeight = Random.Range(0, totalWeight);
-        int randomPlatformIndex = GetRamdomPlatform(randomWeight);
+        PlatformSetting.PlatformType typeOfPlatform = GetRamdomPlatform1(randomWeight);
 
-        Vector2 platformPos = new Vector2(Random.Range(-7.5f, 7.5f), currentPlatformY);
+        Platform platform = platformGO.GetComponent<Platform>();
+        platform.SetType(typeOfPlatform);
 
-        switch (randomPlatformIndex)
+        Vector2 heightBounds = Vector2.zero;
+
+        switch (typeOfPlatform)
         {
-            case 0:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.normalPlatform.minHeight, platformSetting.normalPlatform.maxHeight);
-                go.name = "0";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Normal:
+                heightBounds = new Vector2(platformSetting.normalPlatform.minHeight, platformSetting.normalPlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Normal.ToString();
+                platformGO.SetActive(true);
                 break;
-            case 1:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.brokenPlatform.minHeight, platformSetting.brokenPlatform.maxHeight);
-                go.name = "1";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Broken:
+                heightBounds = new Vector2(platformSetting.brokenPlatform.minHeight, platformSetting.brokenPlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Broken.ToString();
+                platformGO.SetActive(true);
                 break;
-            case 2:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.oncePlatform.minHeight, platformSetting.oncePlatform.maxHeight);
-                go.name = "2";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Once:
+                heightBounds = new Vector2(platformSetting.oncePlatform.minHeight, platformSetting.oncePlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Once.ToString();
+                platformGO.SetActive(true);
                 break;
-            case 3:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.doublePlatform.minHeight, platformSetting.doublePlatform.maxHeight);
-                go.name = "3";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Doudle:
+                heightBounds = new Vector2(platformSetting.doublePlatform.minHeight, platformSetting.doublePlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Doudle.ToString();
+                platformGO.SetActive(true);
                 break;
-            case 4:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.horizontalPlatform.minHeight, platformSetting.horizontalPlatform.maxHeight);
-                go.name = "4";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Horizontal:
+                heightBounds = new Vector2(platformSetting.horizontalPlatform.minHeight, platformSetting.horizontalPlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Horizontal.ToString();
+                platformGO.SetActive(true);
                 break;
-            case 5:
-                go.transform.position = platformPos;
-                currentPlatformY += Random.Range(platformSetting.verticalPlatform.minHeight, platformSetting.verticalPlatform.maxHeight);
-                go.name = "5";
-                go.SetActive(true);
+            case PlatformSetting.PlatformType.Vertical:
+                heightBounds = new Vector2(platformSetting.verticalPlatform.minHeight, platformSetting.verticalPlatform.maxHeight);
+                platformGO.name = PlatformSetting.PlatformType.Vertical.ToString();
+                platformGO.SetActive(true);
                 break;
             default:
-                break;
+                break; 
         }
+
+        SpriteRenderer goSpriteRend = platformGO.GetComponent<SpriteRenderer>();
+        float spriteSize = goSpriteRend.bounds.size.x;
+        float leftScreen = Camera.main.ViewportToWorldPoint(new Vector3(0, 0)).x;
+        float rightScreen = Camera.main.ViewportToWorldPoint(new Vector3(1, 0)).x;
+        Vector2 platformPos = new Vector2(Random.Range(leftScreen + spriteSize, rightScreen - spriteSize), currentPlatformY);
+        currentPlatformY += Random.Range(heightBounds.x, heightBounds.y) + goSpriteRend.bounds.size.y;
+        platformGO.transform.position = platformPos;
     }
 
-    int GetRamdomPlatform(float _weight)
+    PlatformSetting.PlatformType GetRamdomPlatform1(float _weight)
     {
         if (_weight <= platformSetting.normalPlatform.weight)
-            return 0;
+            return PlatformSetting.PlatformType.Normal;
         else if (_weight <= platformSetting.normalPlatform.weight + platformSetting.brokenPlatform.weight)
-            return 1;
+            return PlatformSetting.PlatformType.Broken;
         else if (_weight <= platformSetting.normalPlatform.weight + platformSetting.brokenPlatform.weight + platformSetting.oncePlatform.weight)
-            return 2;
+            return PlatformSetting.PlatformType.Once;
         else if (_weight <= platformSetting.normalPlatform.weight + platformSetting.brokenPlatform.weight + platformSetting.oncePlatform.weight + platformSetting.doublePlatform.weight)
-            return 3;
+            return PlatformSetting.PlatformType.Doudle;
         else if (_weight <= platformSetting.normalPlatform.weight + platformSetting.brokenPlatform.weight + platformSetting.oncePlatform.weight + platformSetting.doublePlatform.weight + platformSetting.horizontalPlatform.weight)
-            return 4;
+            return PlatformSetting.PlatformType.Horizontal;
         else if (_weight <= platformSetting.normalPlatform.weight + platformSetting.brokenPlatform.weight + platformSetting.oncePlatform.weight + platformSetting.doublePlatform.weight + platformSetting.horizontalPlatform.weight + platformSetting.verticalPlatform.weight)
-            return 5;
-        return -1;
+            return PlatformSetting.PlatformType.Vertical;
+        return default;
     }
 
     void GetTotalWeight()

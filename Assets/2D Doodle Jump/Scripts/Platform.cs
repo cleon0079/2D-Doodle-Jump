@@ -8,27 +8,27 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites;
-
-    float jumpHeight;
-    int platformIndex;
+    PlatformSetting platformSettingRef;
+    PlatformSetting.PlatformType type = PlatformSetting.PlatformType.Ground;
 
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2D;
     Rigidbody2D rigidbody2d;
     Player player;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetType(PlatformSetting.PlatformType _type) => type = _type;
+
+    private void OnEnable()
     {
+        platformSettingRef = FindObjectOfType<GameManager>().platformSetting;
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         rigidbody2d.gravityScale = 0;
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         boxCollider2D.isTrigger = true;
-        platformIndex = int.Parse(gameObject.name);
 
-        SetPlatform();    
+        SetPlatform();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,41 +42,34 @@ public class Platform : MonoBehaviour
 
     void SetPlatform()
     {
-        switch (platformIndex)
+        switch (type)
         {
-            case 0:
-                jumpHeight = 6f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Normal:
+                spriteRenderer.sprite = sprites[platformSettingRef.normalPlatform.index];
                 ResizePlatform();
                 break;
-            case 1:
-                jumpHeight = 0f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Broken:
+                spriteRenderer.sprite = sprites[platformSettingRef.brokenPlatform.index];
                 ResizePlatform();
                 break;
-            case 2:
-                jumpHeight = 6f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Once:
+                spriteRenderer.sprite = sprites[platformSettingRef.oncePlatform.index];
                 ResizePlatform();
                 break;
-            case 3:
-                jumpHeight = 9f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Doudle:
+                spriteRenderer.sprite = sprites[platformSettingRef.doublePlatform.index];
                 ResizePlatform();
                 break;
-            case 4:
-                jumpHeight = 6f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Horizontal:
+                spriteRenderer.sprite = sprites[platformSettingRef.horizontalPlatform.index];
                 ResizePlatform();
                 break;
-            case 5:
-                jumpHeight = 6f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Vertical:
+                spriteRenderer.sprite = sprites[platformSettingRef.verticalPlatform.index];
                 ResizePlatform();
                 break;
-            case 6:
-                jumpHeight = 6f;
-                spriteRenderer.sprite = sprites[platformIndex];
+            case PlatformSetting.PlatformType.Ground:
+                spriteRenderer.sprite = sprites[platformSettingRef.groundPlatform.index];
                 ResizeGround();
                 break;
         }
@@ -84,30 +77,30 @@ public class Platform : MonoBehaviour
 
     void Jump()
     {
-        switch (platformIndex)
+        switch (type)
         {
-            case 0:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Normal:
+                player.Jump(platformSettingRef.normalPlatform.jumpHeight);
                 break;
-            case 1:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Broken:
+                player.Jump(platformSettingRef.brokenPlatform.jumpHeight);
                 rigidbody2d.gravityScale = 1.5f;
                 break;
-            case 2:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Once:
+                player.Jump(platformSettingRef.oncePlatform.jumpHeight);
                 rigidbody2d.gravityScale = 1.5f;
                 break;
-            case 3:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Doudle:
+                player.Jump(platformSettingRef.doublePlatform.jumpHeight);
                 break;
-            case 4:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Horizontal:
+                player.Jump(platformSettingRef.horizontalPlatform.jumpHeight);
                 break;
-            case 5:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Vertical:
+                player.Jump(platformSettingRef.verticalPlatform.jumpHeight);
                 break;
-            case 6:
-                player.Jump(jumpHeight);
+            case PlatformSetting.PlatformType.Ground:
+                player.Jump(platformSettingRef.groundPlatform.jumpHeight);
                 break;
         }
     }

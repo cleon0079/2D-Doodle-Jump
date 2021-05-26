@@ -1,15 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
 using System;
 
 [Serializable]
 public class PlatformSetting
 {
+    public enum PlatformType
+    {
+        Normal,
+        Broken,
+        Once,
+        Doudle,
+        Horizontal,
+        Vertical,
+        Ground
+    }
+
     [Serializable]
     public class NormalPlatform
     {
+        public PlatformType type = PlatformType.Normal;
         public int index = 0;
         public float jumpHeight;
         public float minHeight;
@@ -20,6 +28,7 @@ public class PlatformSetting
     [Serializable]
     public class BrokenPlatform
     {
+        public PlatformType type = PlatformType.Broken;
         public int index = 1;
         public float jumpHeight;
         public float minHeight;
@@ -30,6 +39,7 @@ public class PlatformSetting
     [Serializable]
     public class OncePlatform
     {
+        public PlatformType type = PlatformType.Once;
         public int index = 2;
         public float jumpHeight;
         public float minHeight;
@@ -40,6 +50,7 @@ public class PlatformSetting
     [Serializable]
     public class DoublePlatform
     {
+        public PlatformType type = PlatformType.Doudle;
         public int index = 3;
         public float jumpHeight;
         public float minHeight;
@@ -50,6 +61,7 @@ public class PlatformSetting
     [Serializable]
     public class HorizontalPlatform
     {
+        public PlatformType type = PlatformType.Horizontal;
         public int index = 4;
         public float jumpHeight;
         public float minHeight;
@@ -62,6 +74,7 @@ public class PlatformSetting
     [Serializable]
     public class VerticalPlatform
     {
+        public PlatformType type = PlatformType.Vertical;
         public int index = 5;
         public float jumpHeight;
         public float minHeight;
@@ -74,6 +87,7 @@ public class PlatformSetting
     [Serializable]
     public class GroundPlatform
     {
+        public PlatformType type = PlatformType.Ground;
         public int index = 6;
         public float jumpHeight;
     }
