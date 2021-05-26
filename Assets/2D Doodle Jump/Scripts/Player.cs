@@ -11,14 +11,19 @@ public class Player : MonoBehaviour
     float screenLeft;
     float screenRight;
 
+    SpriteRenderer spriteRenderer;
     Rigidbody2D rigidbody2d;
     Animator anim;
+
+    GameManager gameManager;
 
     private void Start()
     {
         screenLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0)).x;
         screenRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0)).x;
 
+        gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
         rigidbody2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
@@ -27,21 +32,15 @@ public class Player : MonoBehaviour
     }
     
     private void FixedUpdate()
-    {      
-        if(!Mathf.Approximately(Input.GetAxisRaw("Horizontal"), Mathf.Epsilon))
+    {
+        if (gameManager.gameState == GameState.Game)
         {
-            rigidbody2d.velocity = new Vector3(
-                Input.GetAxisRaw("Horizontal") * moveSpeed, 
-                rigidbody2d.velocity.y);
+            Movement();
         }
-        else if(!Mathf.Approximately(rigidbody2d.velocity.x, Mathf.Epsilon))
-        {
-            rigidbody2d.velocity = new Vector3(
-                rigidbody2d.velocity.x - ((moveSpeed * Time.deltaTime) 
-                * Mathf.Sign(rigidbody2d.velocity.x)), 
-                rigidbody2d.velocity.y);
-        }
+    }
 
+    private void Update()
+    {
         if(transform.position.x < screenLeft)
         {
             transform.position = new Vector3(screenRight, transform.position.y);
@@ -51,10 +50,6 @@ public class Player : MonoBehaviour
         {
             transform.position = new Vector3(screenLeft, transform.position.y);
         }
-    }
-
-    private void Update()
-    {
         if(rigidbody2d.velocity.y > 0)
         {
             anim.SetBool("JumpUp", true);
@@ -65,9 +60,43 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Movement()
+    {
+        if(Input.GetAxisRaw("Horizontal") > .1f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < -.1f)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        if (!Mathf.Approximately(Input.GetAxisRaw("Horizontal"), Mathf.Epsilon))
+        {
+            rigidbody2d.velocity = new Vector3(
+                Input.GetAxisRaw("Horizontal") * moveSpeed,
+                rigidbody2d.velocity.y);
+        }
+        else if (!Mathf.Approximately(rigidbody2d.velocity.x, Mathf.Epsilon))
+        {
+            rigidbody2d.velocity = new Vector3(
+                rigidbody2d.velocity.x - ((moveSpeed * Time.fixedDeltaTime)
+                * Mathf.Sign(rigidbody2d.velocity.x)),
+                rigidbody2d.velocity.y);
+        }
+    }
+
     public void Jump(float _jumpHeight)
     {
         rigidbody2d.velocity = Vector3.zero;
         rigidbody2d.AddForce(new Vector3(0, _jumpHeight), ForceMode2D.Impulse);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Disable")
+        {
+            gameManager.EndGame();
+        }
     }
 }

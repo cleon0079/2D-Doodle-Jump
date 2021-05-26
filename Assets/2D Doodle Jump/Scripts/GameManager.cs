@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> platformPool = new List<GameObject>();
 
+    public Transform disableGO;
     public Transform parent;
     public GameObject platformPrefab;
 
     public PlatformSetting platformSetting;
+    public GameState gameState = GameState.Pause;
 
     int numberOfPlatform = 60;
     float totalWeight;
@@ -95,6 +97,18 @@ public class GameManager : MonoBehaviour
         platformGO.transform.position = platformPos;
     }
 
+    void GetTotalWeight()
+    {
+        float weight = 0;
+        weight += platformSetting.normalPlatform.weight;
+        weight += platformSetting.brokenPlatform.weight;
+        weight += platformSetting.oncePlatform.weight;
+        weight += platformSetting.doublePlatform.weight;
+        weight += platformSetting.horizontalPlatform.weight;
+        weight += platformSetting.verticalPlatform.weight;
+        totalWeight = weight;
+    }
+
     PlatformSetting.PlatformType GetRamdomPlatform1(float _weight)
     {
         if (_weight <= platformSetting.normalPlatform.weight)
@@ -112,15 +126,33 @@ public class GameManager : MonoBehaviour
         return default;
     }
 
-    void GetTotalWeight()
+    void NewPlatform(int _index)
     {
-        float weight = 0;
-        weight += platformSetting.normalPlatform.weight;
-        weight += platformSetting.brokenPlatform.weight;
-        weight += platformSetting.oncePlatform.weight;
-        weight += platformSetting.doublePlatform.weight;
-        weight += platformSetting.horizontalPlatform.weight;
-        weight += platformSetting.verticalPlatform.weight;
-        totalWeight = weight;
+        if(gameState != GameState.End)
+        {
+            SpawnPlatform(_index);
+        }
     }
+
+    public void BackToPool(GameObject _gameObject)
+    {
+        _gameObject.SetActive(false);
+        int index = platformPool.IndexOf(_gameObject);
+        NewPlatform(index);
+    }
+
+    public void EndGame()
+    {
+        if(gameState != GameState.End)
+        {
+            gameState = GameState.End;
+        }
+    }
+}
+
+public enum GameState
+{
+    Pause,
+    Game,
+    End
 }

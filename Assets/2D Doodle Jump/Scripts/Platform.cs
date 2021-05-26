@@ -8,19 +8,25 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     [SerializeField] Sprite[] sprites;
+    Vector3 startPos;
+    bool hitMax = false;
+
     PlatformSetting platformSettingRef;
     PlatformSetting.PlatformType type = PlatformSetting.PlatformType.Ground;
 
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2D;
     Rigidbody2D rigidbody2d;
+
     Player player;
+    GameManager gameManager;
 
     public void SetType(PlatformSetting.PlatformType _type) => type = _type;
 
     private void OnEnable()
     {
         platformSettingRef = FindObjectOfType<GameManager>().platformSetting;
+        gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -29,6 +35,57 @@ public class Platform : MonoBehaviour
         boxCollider2D.isTrigger = true;
 
         SetPlatform();
+    }
+
+    private void Update()
+    {
+        switch (type)
+        {
+            case PlatformSetting.PlatformType.Horizontal:
+                if (hitMax == false)
+                {
+                    transform.Translate(new Vector3(-platformSettingRef.horizontalPlatform.speed * Time.deltaTime, 0));
+                    if (startPos.x - transform.position.x > platformSettingRef.horizontalPlatform.distance)
+                    {
+                        hitMax = !hitMax;
+                    }
+                }
+                else
+                {
+                    transform.Translate(new Vector3(platformSettingRef.horizontalPlatform.speed * Time.deltaTime, 0));
+                    if (startPos.x - transform.position.x < -platformSettingRef.horizontalPlatform.distance)
+                    {
+                        hitMax = !hitMax;
+                    }
+                }
+                break;
+            case PlatformSetting.PlatformType.Vertical:
+                if (hitMax == false)
+                {
+                    transform.Translate(new Vector3(0, -platformSettingRef.verticalPlatform.speed * Time.deltaTime));
+                    if (startPos.x - transform.position.x > platformSettingRef.verticalPlatform.distance)
+                    {
+                        hitMax = !hitMax;
+                    }
+                }
+                else
+                {
+                    transform.Translate(new Vector3(0, platformSettingRef.verticalPlatform.speed * Time.deltaTime));
+                    if (startPos.x - transform.position.x < -platformSettingRef.verticalPlatform.distance)
+                    {
+                        hitMax = !hitMax;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
+        if(gameManager.disableGO.transform.position.y >= transform.position.y && type != PlatformSetting.PlatformType.Ground)
+        {
+            rigidbody2d.gravityScale = 0;
+            gameManager.BackToPool(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,10 +119,12 @@ public class Platform : MonoBehaviour
                 break;
             case PlatformSetting.PlatformType.Horizontal:
                 spriteRenderer.sprite = sprites[platformSettingRef.horizontalPlatform.index];
+                startPos = transform.position;
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Vertical:
                 spriteRenderer.sprite = sprites[platformSettingRef.verticalPlatform.index];
+                startPos = transform.position;
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Ground:
