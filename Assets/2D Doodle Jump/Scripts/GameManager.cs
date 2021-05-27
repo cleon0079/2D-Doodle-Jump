@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public Transform parent;
     public GameObject platformPrefab;
 
-    public PlatformSetting platformSetting;
     public GameState gameState = GameState.Pause;
+    public PlatformSetting platformSetting;
 
     int numberOfPlatform = 60;
     float totalWeight;

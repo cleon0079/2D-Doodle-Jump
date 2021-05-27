@@ -18,7 +18,6 @@ public class PlatformSetting
     public class NormalPlatform
     {
         public PlatformType type = PlatformType.Normal;
-        public int index = 0;
         public float jumpHeight;
         public float minHeight;
         public float maxHeight;

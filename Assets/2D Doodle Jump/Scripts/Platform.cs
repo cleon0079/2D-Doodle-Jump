@@ -102,33 +102,33 @@ public class Platform : MonoBehaviour
         switch (type)
         {
             case PlatformSetting.PlatformType.Normal:
-                spriteRenderer.sprite = sprites[platformSettingRef.normalPlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Normal];
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Broken:
-                spriteRenderer.sprite = sprites[platformSettingRef.brokenPlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Broken];
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Once:
-                spriteRenderer.sprite = sprites[platformSettingRef.oncePlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Once];
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Doudle:
-                spriteRenderer.sprite = sprites[platformSettingRef.doublePlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Doudle];
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Horizontal:
-                spriteRenderer.sprite = sprites[platformSettingRef.horizontalPlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Horizontal];
                 startPos = transform.position;
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Vertical:
-                spriteRenderer.sprite = sprites[platformSettingRef.verticalPlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Vertical];
                 startPos = transform.position;
                 ResizePlatform();
                 break;
             case PlatformSetting.PlatformType.Ground:
-                spriteRenderer.sprite = sprites[platformSettingRef.groundPlatform.index];
+                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Ground];
                 ResizeGround();
                 break;
         }
