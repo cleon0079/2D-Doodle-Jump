@@ -10,6 +10,7 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Get the 
         Vector3 targetPos = Camera.main.WorldToViewportPoint(target.transform.position);
         Vector3 deltaPos = target.transform.position - Camera.main.ViewportToWorldPoint(new Vector3(.5f, .5f, targetPos.z));
         Vector3 targetDir = transform.position + deltaPos;

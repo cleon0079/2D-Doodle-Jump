@@ -1,5 +1,6 @@
 using System;
 
+// Setting of the platforms of my game
 [Serializable]
 public class PlatformSetting
 {
@@ -17,77 +18,107 @@ public class PlatformSetting
     [Serializable]
     public class NormalPlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Normal;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
     }
 
     [Serializable]
     public class BrokenPlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Broken;
-        public int index = 1;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
     }
 
     [Serializable]
     public class OncePlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Once;
-        public int index = 2;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
     }
 
     [Serializable]
     public class DoublePlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Doudle;
-        public int index = 3;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
     }
 
     [Serializable]
     public class HorizontalPlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Horizontal;
-        public int index = 4;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
+        // How far the platform can go
         public float distance;
+        // How fast the platform is going
         public float speed;
     }
 
     [Serializable]
     public class VerticalPlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Vertical;
-        public int index = 5;
+        // How high the player can jump
         public float jumpHeight;
+        // Min dis of two spawning platform
         public float minHeight;
+        // Max dis of two spawning platform
         public float maxHeight;
+        // How many percentage of this platform we are spawning
         public float weight;
+        // How far the platform can go
         public float distance;
+        // How fast the platform is going
         public float speed;
     }
 
     [Serializable]
     public class GroundPlatform
     {
+        // Type of the platforms
         public PlatformType type = PlatformType.Ground;
-        public int index = 6;
+        // How high the player can jump
         public float jumpHeight;
     }
 

@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public List<GameObject> platformPool = new List<GameObject>();
 
+    [SerializeField] GameObject endMenu;
+    [SerializeField] GameObject scoreTextGO;
+    [SerializeField] Transform cameraPos;
+    [SerializeField] Text highScoreText;
+    [SerializeField] Text scoreText;
+    int score;
+
     public Transform disableGO;
     public Transform parent;
     public GameObject platformPrefab;
 
-    public GameState gameState = GameState.Pause;
+    public GameState gameState = GameState.Game;
     public PlatformSetting platformSetting;
 
     int numberOfPlatform = 60;
@@ -29,6 +37,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        score = (int)cameraPos.position.y;
+        scoreText.text = "Score: " + score;
+    }
 
     void SpawnPlatformPool()
     {
@@ -145,14 +158,32 @@ public class GameManager : MonoBehaviour
     {
         if(gameState != GameState.End)
         {
-            gameState = GameState.End;
+            gameState = GameState.End;    
+            if(PlayerPrefs.HasKey("Score"))
+            {
+                int highscore = PlayerPrefs.GetInt("Score");
+                if(highscore <= score)
+                {
+                    PlayerPrefs.SetInt("Score", score);
+                }
+                else
+                {
+                    PlayerPrefs.SetInt("Score", highscore);
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Score", score);
+            }
+            scoreTextGO.SetActive(false);
+            endMenu.SetActive(true);
+            highScoreText.text = "HighScore: " + PlayerPrefs.GetInt("Score");
         }
     }
 }
 
 public enum GameState
 {
-    Pause,
     Game,
     End
 }
