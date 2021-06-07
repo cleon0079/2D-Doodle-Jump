@@ -7,12 +7,19 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Platform : MonoBehaviour
 {
+    // Sprites for the platform
     [SerializeField] Sprite[] sprites;
+
+    // StartPos and a bool to check if its out of range
     Vector3 startPos;
     bool hitMax = false;
 
     PlatformSetting platformSettingRef;
+
+    // The type and jumpheight and gravity that the platform is
     PlatformSetting.PlatformType type = PlatformSetting.PlatformType.Ground;
+    float jumpHeight;
+    float gravity;
 
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2D;
@@ -21,7 +28,10 @@ public class Platform : MonoBehaviour
     Player player;
     GameManager gameManager;
 
+    // Get the type and jumpheight and gravity when they spawn
     public void SetType(PlatformSetting.PlatformType _type) => type = _type;
+    public void SetJumpHeight(float _jumpHeight) => jumpHeight = _jumpHeight;
+    public void SetGravity(float _gravity) => gravity = _gravity;
 
     private void OnEnable()
     {
@@ -30,57 +40,39 @@ public class Platform : MonoBehaviour
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+
+        // Set the default jumpHeight
+        if(type == PlatformSetting.PlatformType.Ground)
+        {
+            jumpHeight = platformSettingRef.groundPlatform.jumpHeight;
+        }
+
+        // Set up the platforms rigidbody2d var code
         rigidbody2d.gravityScale = 0;
         rigidbody2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        // Set the collider2d to a trigger
         boxCollider2D.isTrigger = true;
 
-        SetPlatform();
+        // Set up the platform
+        SetPlatform(type);
     }
 
     private void Update()
     {
+        // Set up the speed and distance and move it
         switch (type)
         {
             case PlatformSetting.PlatformType.Horizontal:
-                if (hitMax == false)
-                {
-                    transform.Translate(new Vector3(-platformSettingRef.horizontalPlatform.speed * Time.deltaTime, 0));
-                    if (startPos.x - transform.position.x > platformSettingRef.horizontalPlatform.distance)
-                    {
-                        hitMax = !hitMax;
-                    }
-                }
-                else
-                {
-                    transform.Translate(new Vector3(platformSettingRef.horizontalPlatform.speed * Time.deltaTime, 0));
-                    if (startPos.x - transform.position.x < -platformSettingRef.horizontalPlatform.distance)
-                    {
-                        hitMax = !hitMax;
-                    }
-                }
+                PlatformMove(platformSettingRef.horizontalPlatform.speed, platformSettingRef.horizontalPlatform.distance);
                 break;
             case PlatformSetting.PlatformType.Vertical:
-                if (hitMax == false)
-                {
-                    transform.Translate(new Vector3(0, -platformSettingRef.verticalPlatform.speed * Time.deltaTime));
-                    if (startPos.x - transform.position.x > platformSettingRef.verticalPlatform.distance)
-                    {
-                        hitMax = !hitMax;
-                    }
-                }
-                else
-                {
-                    transform.Translate(new Vector3(0, platformSettingRef.verticalPlatform.speed * Time.deltaTime));
-                    if (startPos.x - transform.position.x < -platformSettingRef.verticalPlatform.distance)
-                    {
-                        hitMax = !hitMax;
-                    }
-                }
+                PlatformMove(platformSettingRef.verticalPlatform.speed, platformSettingRef.verticalPlatform.distance);
                 break;
             default:
                 break;
         }
 
+        // If there is platform that is below the disableGO then move it back to the object pool and reset its gravity
         if(gameManager.disableGO.transform.position.y >= transform.position.y && type != PlatformSetting.PlatformType.Ground)
         {
             rigidbody2d.gravityScale = 0;
@@ -88,96 +80,61 @@ public class Platform : MonoBehaviour
         }
     }
 
+    void PlatformMove(float _speed, float _distance)
+    {
+        // Move the platform left and right or up and down with in a range
+        if (hitMax == false)
+        {
+            transform.Translate(new Vector3(0, -_speed * Time.deltaTime));
+            if (startPos.x - transform.position.x > _distance)
+            {
+                hitMax = !hitMax;
+            }
+        }
+        else
+        {
+            transform.Translate(new Vector3(0, _speed * Time.deltaTime));
+            if (startPos.x - transform.position.x < -_distance)
+            {
+                hitMax = !hitMax;
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // If the player hits the platform and its falling down then give it a force to jump up
         player = collision.GetComponent<Player>();
         if (collision.gameObject.tag == "Player" && collision.GetComponent<Rigidbody2D>().velocity.y <= 0)
         {
-            Jump();
+            // Get what type it is and then give the player a force to jump up
+            player.Jump(jumpHeight);
+            // After the player jumps up then the platform falls down
+            rigidbody2d.gravityScale = gravity;
         }
     }
 
-    void SetPlatform()
+    void SetPlatform(PlatformSetting.PlatformType _type)
     {
-        switch (type)
-        {
-            case PlatformSetting.PlatformType.Normal:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Normal];
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Broken:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Broken];
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Once:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Once];
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Doudle:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Doudle];
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Horizontal:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Horizontal];
-                startPos = transform.position;
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Vertical:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Vertical];
-                startPos = transform.position;
-                ResizePlatform();
-                break;
-            case PlatformSetting.PlatformType.Ground:
-                spriteRenderer.sprite = sprites[(int)PlatformSetting.PlatformType.Ground];
-                ResizeGround();
-                break;
-        }
-    }
-
-    void Jump()
-    {
-        switch (type)
-        {
-            case PlatformSetting.PlatformType.Normal:
-                player.Jump(platformSettingRef.normalPlatform.jumpHeight);
-                break;
-            case PlatformSetting.PlatformType.Broken:
-                player.Jump(platformSettingRef.brokenPlatform.jumpHeight);
-                rigidbody2d.gravityScale = 1.5f;
-                break;
-            case PlatformSetting.PlatformType.Once:
-                player.Jump(platformSettingRef.oncePlatform.jumpHeight);
-                rigidbody2d.gravityScale = 1.5f;
-                break;
-            case PlatformSetting.PlatformType.Doudle:
-                player.Jump(platformSettingRef.doublePlatform.jumpHeight);
-                break;
-            case PlatformSetting.PlatformType.Horizontal:
-                player.Jump(platformSettingRef.horizontalPlatform.jumpHeight);
-                break;
-            case PlatformSetting.PlatformType.Vertical:
-                player.Jump(platformSettingRef.verticalPlatform.jumpHeight);
-                break;
-            case PlatformSetting.PlatformType.Ground:
-                player.Jump(platformSettingRef.groundPlatform.jumpHeight);
-                break;
-        }
+        // Get what type it is then change the sprites to its image and then resize it
+        spriteRenderer.sprite = sprites[(int)_type];
+        ResizePlatform();
+        startPos = transform.position;
     }
 
     void ResizePlatform()
     {
+        // Set the size of the platforms to the size it should be
         transform.localScale = Vector3.one;
         boxCollider2D.size = new Vector2(spriteRenderer.bounds.size.x, spriteRenderer.bounds.size.y);
-    }
 
-    void ResizeGround()
-    {
-        transform.localScale = Vector3.one;
-        float width = spriteRenderer.bounds.size.x;
-        boxCollider2D.size = new Vector2(width, spriteRenderer.bounds.size.y);
-        float targetwidth = Camera.main.orthographicSize * 2 / Screen.height * Screen.width;
-        Vector3 Scale = transform.localScale;
-        Scale.x = targetwidth / width;
-        transform.localScale = Scale;
+        // Resize the ground to scale it to fill the full area of the screen
+        if (type == PlatformSetting.PlatformType.Ground)
+        {
+            float targetwidth = Camera.main.orthographicSize * 2 / Screen.height * Screen.width;
+            Vector3 Scale = transform.localScale;
+            Scale.x = targetwidth / spriteRenderer.bounds.size.x;
+            transform.localScale = Scale;
+        }
     }
 }

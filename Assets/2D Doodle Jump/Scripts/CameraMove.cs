@@ -10,15 +10,16 @@ public class CameraMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Get the 
-        Vector3 targetPos = Camera.main.WorldToViewportPoint(target.transform.position);
-        Vector3 deltaPos = target.transform.position - Camera.main.ViewportToWorldPoint(new Vector3(.5f, .5f, targetPos.z));
-        Vector3 targetDir = transform.position + deltaPos;
+        // Get the midpoint of the camera and the targetPos
+        Vector3 targetViewportPos = Camera.main.WorldToViewportPoint(target.transform.position);
+        Vector3 deltaPos = target.transform.position - Camera.main.ViewportToWorldPoint(new Vector3(.5f, .5f, targetViewportPos.z));
+        Vector3 targetPos = transform.position + deltaPos;
 
-        targetDir.x = 0;
-        if(targetDir.y > transform.position.y)
+        // If the targetpos > camerapos then move the camera up
+        targetPos.x = 0;
+        if(targetPos.y > transform.position.y)
         {
-            transform.position = Vector3.SmoothDamp(transform.position, targetDir, ref velocity, .5f);
+            transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, .5f);
         }
     }
 }

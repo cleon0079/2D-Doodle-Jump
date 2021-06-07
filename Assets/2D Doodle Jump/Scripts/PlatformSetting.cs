@@ -22,6 +22,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Normal;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -37,6 +39,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Broken;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -52,6 +56,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Once;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -67,6 +73,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Doudle;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -82,6 +90,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Horizontal;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -101,6 +111,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Vertical;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
         // Min dis of two spawning platform
         public float minHeight;
         // Max dis of two spawning platform
@@ -120,6 +132,8 @@ public class PlatformSetting
         public PlatformType type = PlatformType.Ground;
         // How high the player can jump
         public float jumpHeight;
+        // The gravity for the platform
+        public float gravity;
     }
 
     public NormalPlatform normalPlatform;
