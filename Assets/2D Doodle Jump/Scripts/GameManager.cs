@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviour
 {
     // Make a object pool for the platform
@@ -18,6 +20,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text scoreText;
     // Score of the game
     int score;
+
+    [SerializeField] AudioClip SFXMusic;
+    [SerializeField] AudioMixerGroup musicMixer;
+    AudioSource audioSoure;
+
+    [SerializeField] GameObject pauseMenu;
+    bool isPause = false;
 
     // The disable cubes pos and the platforms spawning parent
     public Transform disableGO;
@@ -47,6 +56,11 @@ public class GameManager : MonoBehaviour
         {
             SpawnPlatform(i);
         }
+
+        audioSoure = GetComponent<AudioSource>();
+        audioSoure.playOnAwake = false;
+        audioSoure.outputAudioMixerGroup = musicMixer;
+        audioSoure.clip = SFXMusic;
     }
 
     void Update()
@@ -54,6 +68,27 @@ public class GameManager : MonoBehaviour
         // Show the text in the canves
         score = (int)cameraPos.position.y;
         scoreText.text = "Score: " + score;
+
+        // If we press ESC then pause
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame(isPause);
+        }
+    }
+
+    public void PlaySFX()
+    {
+        audioSoure.Play();
+    }
+
+    public void PauseGame(bool _ispause)
+    {
+        // If we press ESC or click the back button when pause, it change the timescale the show the paues menus
+        float timeScale = System.Convert.ToInt32(_ispause);
+        Time.timeScale = timeScale;
+        scoreTextGO.SetActive(_ispause);
+        pauseMenu.SetActive(!_ispause);
+        isPause = !_ispause;
     }
 
     void SpawnPlatformPool()

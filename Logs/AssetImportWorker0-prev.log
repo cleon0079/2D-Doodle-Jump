@@ -15,11 +15,11 @@ D:/PROGRAM FILES (X86)/helloworld/2D-Doodle-Jump
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53148
+53989
 Successfully changed project path to: D:/PROGRAM FILES (X86)/helloworld/2D-Doodle-Jump
 D:/PROGRAM FILES (X86)/helloworld/2D-Doodle-Jump
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 885.10 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 40.44 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.2.2f1 (068178b99f32)
 [Subsystems] Discovering subsystems at path D:/Program Files/Unity/Editor/Data/Resources/UnitySubsystems
@@ -35,86 +35,212 @@ Initialize mono
 Mono path[0] = 'D:/Program Files/Unity/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'D:/Program Files/Unity/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56120
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003714 seconds.
+Registered in 0.002636 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 137.23 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 46.10 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.917 seconds
+- Completed reload, in  1.633 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001581 seconds.
+Registered in 0.001354 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 61.85 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 49.38 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.343 seconds
+- Completed reload, in  1.641 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1798 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.7 MB.
-System memory in use after: 84.8 MB.
+System memory in use before: 84.3 MB.
+System memory in use after: 84.4 MB.
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 2245.
-Total: 1.860721 ms (FindLiveObjects: 0.214466 ms CreateObjectMapping: 0.080047 ms MarkObjects: 1.503529 ms  DeleteObjects: 0.060791 ms)
+Total: 5.232149 ms (FindLiveObjects: 0.447434 ms CreateObjectMapping: 0.164626 ms MarkObjects: 4.530602 ms  DeleteObjects: 0.086844 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/2D Doodle Jump/Scripts/CameraMove.cs
-  artifactKey: Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D Doodle Jump/Scripts/CameraMove.cs using Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fda4265ad4ff7b38df34a8131471aa3b') in 0.101920 seconds
-  Import took 0.117416 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 2577.583985 seconds.
-  path: Assets/2D Doodle Jump/Scripts/CameraMove.cs
-  artifactKey: Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D Doodle Jump/Scripts/CameraMove.cs using Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a4baf98954352b483cd356753026b9c') in 0.009390 seconds
-  Import took 0.077021 seconds .
+  path: Assets/2D Doodle Jump/Scripts/MenuManager.cs
+  artifactKey: Guid(532bafb6781a2ca40bda7bc2ebca458c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Scripts/MenuManager.cs using Guid(532bafb6781a2ca40bda7bc2ebca458c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fb5a9dfe62c7367d7849858c1d893f7') in 0.086734 seconds
+  Import took 0.172799 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001157 seconds.
+Registered in 0.001159 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.67 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.103 seconds
+- Completed reload, in  1.152 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.3 MB.
-System memory in use after: 84.5 MB.
+System memory in use before: 84.0 MB.
+System memory in use after: 84.1 MB.
 
 Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2248.
-Total: 2.066880 ms (FindLiveObjects: 0.273746 ms CreateObjectMapping: 0.116673 ms MarkObjects: 1.656827 ms  DeleteObjects: 0.018501 ms)
+Total: 2.560759 ms (FindLiveObjects: 0.171044 ms CreateObjectMapping: 0.095151 ms MarkObjects: 2.276817 ms  DeleteObjects: 0.016614 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 218.742245 seconds.
+  path: Assets/2D Doodle Jump/Scripts/MenuManager.cs
+  artifactKey: Guid(532bafb6781a2ca40bda7bc2ebca458c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Scripts/MenuManager.cs using Guid(532bafb6781a2ca40bda7bc2ebca458c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76e7e594597236afbb71e8fd84cd2c04') in 0.006292 seconds
+  Import took 0.009269 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 387.353321 seconds.
+  path: Assets/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd5b09b37ce1383d8a7c317dc94a0800') in 0.021924 seconds
+  Import took 0.026138 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.837183 seconds.
+  path: Assets/2D Doodle Jump
+  artifactKey: Guid(726e1d0547a45654ba29f7e419e5f140) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump using Guid(726e1d0547a45654ba29f7e419e5f140) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07a5e6eb39e50749f75fa2c99e07cf75') in 0.016264 seconds
+  Import took 0.023714 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000649 seconds.
+  path: Assets/2D Doodle Jump
+  artifactKey: Guid(726e1d0547a45654ba29f7e419e5f140) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump using Guid(726e1d0547a45654ba29f7e419e5f140) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07a5e6eb39e50749f75fa2c99e07cf75') in 0.005460 seconds
+  Import took 0.011263 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.128656 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio
+  artifactKey: Guid(4288aac9391eb4e4da970a17f425c3dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio using Guid(4288aac9391eb4e4da970a17f425c3dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dc72f73c50e5a59d3006fc8386f2892') in 0.006275 seconds
+  Import took 0.010371 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.137981 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1be503b86119d0f8a3fe8178295b2b40') in 0.006244 seconds
+  Import took 0.009922 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.041047 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1be503b86119d0f8a3fe8178295b2b40') in 0.005265 seconds
+  Import took 0.008458 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.667266 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57c76a399593af56f39afb7209feef25') in 0.007665 seconds
+  Import took 0.011521 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.286177 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5dcdd54469f8d75655f5cfc85112eea') in 0.004283 seconds
+  Import took 0.042126 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000533 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5dcdd54469f8d75655f5cfc85112eea') in 0.005504 seconds
+  Import took 0.008496 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.786945 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '655167e3548d14467697241cb42b3d80') in 0.006826 seconds
+  Import took 0.011188 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001157 seconds.
+Registered in 0.002709 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.33 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.327 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.1 MB.
+System memory in use after: 84.2 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2251.
+Total: 2.273041 ms (FindLiveObjects: 0.319812 ms CreateObjectMapping: 0.117050 ms MarkObjects: 1.811637 ms  DeleteObjects: 0.022277 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001541 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.217 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.2 MB.
+System memory in use after: 84.3 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2254.
+Total: 1.861477 ms (FindLiveObjects: 0.178974 ms CreateObjectMapping: 0.066454 ms MarkObjects: 1.600946 ms  DeleteObjects: 0.013971 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001672 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
@@ -123,45 +249,130 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.134 seconds
+- Completed reload, in  1.254 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.5 MB.
-System memory in use after: 84.6 MB.
+System memory in use before: 84.3 MB.
+System memory in use after: 84.4 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2251.
-Total: 4.911578 ms (FindLiveObjects: 0.174820 ms CreateObjectMapping: 0.074006 ms MarkObjects: 4.638209 ms  DeleteObjects: 0.023410 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 712.643166 seconds.
-  path: Assets/2D Doodle Jump/Scripts/CameraMove.cs
-  artifactKey: Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/2D Doodle Jump/Scripts/CameraMove.cs using Guid(3d2a6727b28b3fe4aac48c37248f03b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70b2cfe00d8db29eaecc44241ae91331') in 0.006641 seconds
-  Import took 0.011061 seconds .
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2257.
+Total: 2.583791 ms (FindLiveObjects: 0.375694 ms CreateObjectMapping: 0.121204 ms MarkObjects: 2.057820 ms  DeleteObjects: 0.026808 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001202 seconds.
+Registered in 0.001467 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.34 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.40 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.118 seconds
+- Completed reload, in  1.276 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.45 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2260.
+Total: 3.326872 ms (FindLiveObjects: 0.272236 ms CreateObjectMapping: 0.086089 ms MarkObjects: 2.943249 ms  DeleteObjects: 0.023410 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001511 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.232 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.5 MB.
+System memory in use after: 84.6 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2263.
+Total: 2.332322 ms (FindLiveObjects: 0.337936 ms CreateObjectMapping: 0.109876 ms MarkObjects: 1.864120 ms  DeleteObjects: 0.018124 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001317 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.196 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 84.6 MB.
 System memory in use after: 84.7 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2254.
-Total: 4.196439 ms (FindLiveObjects: 0.203516 ms CreateObjectMapping: 0.072118 ms MarkObjects: 3.865300 ms  DeleteObjects: 0.054372 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2266.
+Total: 2.112569 ms (FindLiveObjects: 0.266950 ms CreateObjectMapping: 0.081180 ms MarkObjects: 1.736875 ms  DeleteObjects: 0.025298 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 308.467520 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a52197d428ff67a505c63de507a2144') in 0.016566 seconds
+  Import took 0.020122 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.002311 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer
+  artifactKey: Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/NewAudioMixer.mixer using Guid(85081ba767a63244ca45c1df6f692706) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a52197d428ff67a505c63de507a2144') in 0.007606 seconds
+  Import took 0.010950 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001587 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.224 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.58 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1788 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.7 MB.
+System memory in use after: 84.8 MB.
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2269.
+Total: 2.689136 ms (FindLiveObjects: 0.253735 ms CreateObjectMapping: 0.120449 ms MarkObjects: 2.288522 ms  DeleteObjects: 0.024543 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 10181.330546 seconds.
+  path: Assets/2D Doodle Jump/Resources/Audio/2012101013130947556143.mp3
+  artifactKey: Guid(3e2a3b47ef0ae374a9c434dbfb869a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/2D Doodle Jump/Resources/Audio/2012101013130947556143.mp3 using Guid(3e2a3b47ef0ae374a9c434dbfb869a05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d511e8d597a590e96646770f2601ed4') in 0.246620 seconds
+  Import took 0.317732 seconds .
 

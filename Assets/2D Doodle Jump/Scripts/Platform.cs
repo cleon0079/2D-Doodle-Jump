@@ -111,6 +111,8 @@ public class Platform : MonoBehaviour
             player.Jump(jumpHeight);
             // After the player jumps up then the platform falls down
             rigidbody2d.gravityScale = gravity;
+
+            gameManager.PlaySFX();
         }
     }
 
